@@ -4,9 +4,9 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     routeRules: {
         '/': { prerender: true },
-        '/isr': { isr: 1200 },
+        '/isr': { isr: 60 },
         '/ssr': { ssr: true },
-        '/swr': { swr: 3600 },
+        '/swr': { swr: 60 },
     },
     nitro: {
         devProxy: {
