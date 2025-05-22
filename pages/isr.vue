@@ -15,6 +15,10 @@ const { data } = await useFetch('/api/time', {
   key: 'time-data'
 })
 
+definePageMeta({
+  isr: 60 // 设置为 ISR 页面，每 60 秒重新生成一次缓存页面
+})
+
 </script>
 
 <style scoped>

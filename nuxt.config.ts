@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     routeRules: {
         '/': { prerender: true },
-        '/isr': { isr: 3600 },
+        // '/isr': { isr: 3600 },
         '/ssr': { ssr: true },
         '/swr': { swr: 3600 },
     },
