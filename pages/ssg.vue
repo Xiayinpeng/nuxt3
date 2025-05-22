@@ -11,10 +11,6 @@
 <script setup>
 const generatedTime = new Date().toLocaleString()
 const num = countNum()
-// 设置该页面为SSG模式
-definePageMeta({
-  static: true
-})
 </script>
 
 <style scoped>

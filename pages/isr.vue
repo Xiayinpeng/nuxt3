@@ -8,16 +8,17 @@
 </template>
 
 <script setup>
-
 const num = countNum()
-// 使用useFetch实现SWR策略
-const { data } = await useFetch('/api/time', {
-  key: 'time-data'
+// 使用 useAsyncData 而不是 useFetch
+const { data } = await useAsyncData('time-data', () => {
+  return {
+    time: new Date().toLocaleString(),
+    timestamp: Date.now()
+  }
+}, { 
+  server: true // 确保只在服务器端执行
 })
 
-definePageMeta({
-  isr: 60 // 设置为 ISR 页面，每 60 秒重新生成一次缓存页面
-})
 
 </script>
 

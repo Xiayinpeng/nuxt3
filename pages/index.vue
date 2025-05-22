@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1>{{ data.data.evt_info.cn_name }}</h1>
+    <!-- <h1>{{ data.data.evt_info.cn_name }}</h1> -->
+    <h1>生成时间: {{ data.time }}</h1>
     <nav>
       <NuxtLink to="/ssg" class="nav-link">SSG页面</NuxtLink>
       <NuxtLink to="/ssr" class="nav-link">SSR页面</NuxtLink>
@@ -20,12 +21,19 @@
   </div>
 </template>
 <script setup>
-const { data } = await useFetch('http://test.api.pokekara.com/xevent/event_info', {
-    params: {
-        evt_id: 10001113,
-        evt_sub: 0,
-        __uid__: 'u1542120744520855552'
-    }
+// const { data } = await useFetch('http://test.api.pokekara.com/xevent/event_info', {
+//     params: {
+//         evt_id: 10001113,
+//         evt_sub: 0,
+//         __uid__: 'u1542120744520855552'
+//     }
+// })
+// 使用 useAsyncData 而不是 useFetch
+const { data } = await useAsyncData('time-data', () => $fetch('/api/time'), {
+  watch: [], // 不监听任何响应式数据变化
+  server: true,
+  // 使用 swr 策略
+  cache: 'force-cache'
 })
 
 </script>

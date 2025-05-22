@@ -1,15 +1,18 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
-    compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
     routeRules: {
-        '/': { prerender: true },
-        // '/isr': { isr: 3600 },
-        '/ssr': { ssr: true },
-        '/swr': { swr: 3600 },
+        '/': { isr: 60 },
+        '/ssg': { static: true },
+        '/ssr': { ssr: true }, // 修改为 ssr: true
+        '/swr': { swr: 3600 }, // 使用正确的 swr 配置
+        '/isr': { isr: 60 },
     },
     nitro: {
+        // 移除 preset: 'static' 配置
+        preset: 'node-server',
         devProxy: {
+            // ... 现有代码 ...
             '/api': {
                 target: 'https://test.api.pokekara.com',
                 changeOrigin: true,
@@ -27,13 +30,12 @@ export default defineNuxtConfig({
                 changeOrigin: true,
             }
         },
-        // 配置缓存存储
         storage: {
             'cache': {
-            driver: 'fs', // 使用文件系统作为缓存驱动
-            base: './.output/cache/' // 缓存目录
+                driver: 'fs',
+                base: './.output/cache/'
+            }
         }
-      },
-    },
-    // 移除 @nuxtjs/proxy 相关配置
+    }
 })
+
