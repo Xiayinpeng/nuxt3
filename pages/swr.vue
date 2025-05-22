@@ -10,26 +10,7 @@
 <script setup>
 const generatedTime = new Date().toLocaleString()
 const num = countNum()
-// 使用useFetch实现SWR策略
-const { data } = await useFetch('/api/time', {
-  key: 'time-data',
-  staleTime: 3600000, // 3600秒后数据过期
-  cache: 'force-cache'
-})
-console.log(data);
 
-
-// 更新显示时间
-onMounted(() => {
-  setInterval(() => {
-    currentTime.value = new Date().toLocaleString()
-  }, 1000)
-})
-
-// 监听数据变化
-watch(data, () => {
-  updateTime.value = new Date().toLocaleString()
-})
 </script>
 
 <style scoped>

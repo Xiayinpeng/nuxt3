@@ -2,20 +2,21 @@
   <div class="container">
     <h1>ISR (Incremental Static Regeneration) 页面</h1>
     <p>这个页面会在后台定期重新生成，保持数据的相对新鲜。</p>
-    <p>页面生成时间: {{ generatedTime }}</p>
-    <p>随机数据: {{ randomNumber }}</p>
+    <p>页面生成时间: {{ data.time }}</p>
     <p>访问次数: {{ num }}</p>
   </div>
 </template>
 
 <script setup>
-const generatedTime = new Date().toLocaleString()
-const randomNumber = Math.floor(Math.random() * 1000)
+
 const num = countNum()
-// 设置该页面为ISR模式，revalidate时间为3600秒
-// definePageMeta({
-//   static: true
-// })
+// 使用useFetch实现SWR策略
+const { data } = await useFetch('/api/time', {
+  key: 'time-data',
+  staleTime: 3600000, // 3600秒后数据过期
+  cache: 'force-cache'
+})
+
 </script>
 
 <style scoped>
