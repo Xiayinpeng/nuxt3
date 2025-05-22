@@ -1,5 +1,5 @@
 echo "🔁 拉取最新代码..."
-git pull origin master
+git pull
 
 echo "🧹 清理旧的缓存..."
 rm -rf .output/cache/*
