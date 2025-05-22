@@ -12,6 +12,6 @@ mkdir -p .output/cache
 chmod -R 755 .output/cache
 
 echo "🚀 重启 PM2 服务..."
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 echo "✅ 部署完成！"
