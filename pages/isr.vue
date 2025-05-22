@@ -12,9 +12,7 @@
 const num = countNum()
 // 使用useFetch实现SWR策略
 const { data } = await useFetch('/api/time', {
-  key: 'time-data',
-  staleTime: 3600000, // 3600秒后数据过期
-  cache: 'force-cache'
+  key: 'time-data'
 })
 
 </script>
