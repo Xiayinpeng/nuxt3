@@ -7,6 +7,7 @@
       <NuxtLink to="/ssr" class="nav-link">SSR页面</NuxtLink>
       <NuxtLink to="/isr" class="nav-link">ISR页面</NuxtLink>
       <NuxtLink to="/swr" class="nav-link">SWR页面</NuxtLink>
+      <NuxtLink to="/draw" class="nav-link">画画页面</NuxtLink>
     </nav>
     <div class="description">
       <p>这是一个展示Nuxt3不同渲染策略的演示项目：</p>
