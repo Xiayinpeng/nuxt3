@@ -241,6 +241,7 @@ const initGame = () => {
 
 // 选择画笔
 const selectBrush = (color) => {
+  if (isAnimating.value || gameStatus.value !== 'playing') return
   currentBrush.value = color
 }
 
